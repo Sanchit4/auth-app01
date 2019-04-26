@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Homepage, Signup } from "./containers";
 import { isLoggedIn } from "./utils";
+import "./App.css";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -30,13 +31,15 @@ const PublicRoute = ({ component: Component, ...rest }) => (
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <PrivateRoute exact path="/" component={Homepage} />
-          <PublicRoute path="/login" component={Login} />
-          <PublicRoute path="/signup" component={Signup} />
-        </Switch>
-      </Router>
+      <div className="App">
+        <Router>
+          <Switch>
+            <PrivateRoute exact path="/" component={Homepage} />
+            <PublicRoute path="/login" component={Login} />
+            <PublicRoute path="/signup" component={Signup} />
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
