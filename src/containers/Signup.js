@@ -5,6 +5,8 @@ import * as auth from "../apis/auth";
 import { saveObject } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import actions from "../actions";
+import { connect } from "react-redux";
 
 toast.configure();
 
@@ -57,8 +59,8 @@ class Signup extends Component {
     const { user } = this.state;
 
     if (this.isValid(user)) {
-      auth
-        .signupApi(user)
+      actions
+        .onSignupPress(user)
         .then(res => {
           console.log(res, "res");
           this.notify();
@@ -93,4 +95,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default connect(state => state)(Signup);

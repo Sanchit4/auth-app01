@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { removeObject } from "../utils";
+import { removeObject, getObject } from "../utils";
 
 export default class extends Component {
   logout = () => {
@@ -8,6 +8,6 @@ export default class extends Component {
   };
 
   render() {
-    return <div onClick={this.logout}>Logout</div>;
+    return <h1 onClick={this.logout}>Welcome {getObject("user").name}</h1>;
   }
 }

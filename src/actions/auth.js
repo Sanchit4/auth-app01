@@ -1,6 +1,7 @@
 import types from "../types";
 import store from "../store";
-import { loginApi } from "../apis/auth";
+import { loginApi, signupApi } from "../apis/auth";
+
 const { dispatch } = store;
 
 const authFetch = () => {
@@ -24,6 +25,19 @@ export function onLoginPress(data) {
       .then(res => {
         loginSuccess(res);
         resolve({ ...res, xyz: "sam" });
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
+
+export function onSignupPress(data) {
+  authFetch();
+  return new Promise((resolve, reject) => {
+    signupApi(data)
+      .then(res => {
+        resolve({ ...res });
       })
       .catch(error => {
         reject(error);
