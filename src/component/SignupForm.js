@@ -122,24 +122,24 @@ const SignupForm = props => {
 
           <Form.Group controlId="formGridAddress2">
             <Form.Label>Address</Form.Label>
-            <Form.Control value={address.address} />
+            <Form.Control value={address.address} onChange={onChange} />
           </Form.Group>
 
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>City</Form.Label>
-              <Form.Control value={address.city} />
+              <Form.Control value={address.city} onChange={onChange} />
             </Form.Group>
             <Form.Group as={Col}>
               <Form.Label>State</Form.Label>
-              <Form.Control value={address.state} />
+              <Form.Control value={address.state} onChange={onChange} />
             </Form.Group>
           </Form.Row>
 
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Pin</Form.Label>
-              <Form.Control value={address.zipcode} />
+              <Form.Control value={address.zipcode} onChange={onChange} />
             </Form.Group>
             <Form.Group as={Col}>
               <Form.Label>Country</Form.Label>

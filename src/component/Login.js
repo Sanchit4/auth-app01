@@ -33,7 +33,8 @@ class Login extends Component {
   };
   notify = () => toast("Logged In Successfully ");
 
-  login = () => {
+  login = e => {
+    e.preventDefault();
     const { email, password } = this.state;
     console.log(email, password, "the email and password vallue");
     this.setState({ loading: true });
@@ -43,18 +44,18 @@ class Login extends Component {
       .then(res => {
         console.log(res.xyz, "the reus");
         console.log(res, "teh result is sucess");
+        this.setState({ loading: false });
         saveObject("user", res.data);
         this.props.history.push("/");
         this.notify();
-        // this.setState({ loading: false });
       })
       .catch(error => {
         this.setState({ loading: false });
         console.log(error, "the; error response");
-      })
-      .finally(() => {
-        this.setState({ loading: false });
       });
+    /* .finally(() => {
+        this.setState({ loading: false });
+      });*/
     console.log(email, password);
   };
 

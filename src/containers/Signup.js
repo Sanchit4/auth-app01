@@ -3,7 +3,7 @@ import SignupForm from "../component/SignupForm";
 import validator from "../validations/signup";
 import * as auth from "../apis/auth";
 import { saveObject } from "../utils";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import actions from "../actions";
 import { connect } from "react-redux";
@@ -18,9 +18,7 @@ class Signup extends Component {
       confirmPassword: "",
       firstName: "",
       lastName: "",
-      phone: ""
-    },
-    address: {
+      phone: "",
       address: "",
       city: "",
       state: "",
@@ -37,6 +35,7 @@ class Signup extends Component {
         ...this.state.user,
         [name]: value
       },
+
       errors: {
         ...this.state.errors,
         [name]: ""
@@ -57,7 +56,7 @@ class Signup extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { user } = this.state;
-
+    //const { addres } = this.state;
     if (this.isValid(user)) {
       actions
         .onSignupPress(user)

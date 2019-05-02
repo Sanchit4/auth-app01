@@ -1,6 +1,7 @@
 import types from "../types";
 import store from "../store";
 import { loginApi, signupApi } from "../apis/auth";
+import { toast } from "react-toastify";
 
 const { dispatch } = store;
 
@@ -24,23 +25,11 @@ export function onLoginPress(data) {
     loginApi(data)
       .then(res => {
         loginSuccess(res);
-        resolve({ ...res, xyz: "sam" });
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
-}
-
-export function onSignupPress(data) {
-  authFetch();
-  return new Promise((resolve, reject) => {
-    signupApi(data)
-      .then(res => {
         resolve({ ...res });
       })
-      .catch(error => {
-        reject(error);
+      .catch(err => {
+        toast.error(err.response.data.message || "Something Went Wrong !!");
+        reject(err);
       });
   });
 }
